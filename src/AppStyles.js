@@ -75,3 +75,20 @@ export const Wrapper = styled.div`
 
     overflow: hidden;
 `;
+
+export const Loading = styled.div`
+    ${p => p.blur ? '' : 'visibility:hidden;'}
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    transition: visibility 0.3s ease;
+
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
