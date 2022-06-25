@@ -11,7 +11,7 @@ const GetContent = ({ active, data, showDetails }) => {
     if (data.missed.length)
       return <Content>
         {data.missed.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />)}
-        <ArchiveAll onClick={() => archiveAll(true)} >Click to archive all the calls</ArchiveAll>
+        <ArchiveAll onClick={() => archiveAll(true, true)} >Click to archive all missed calls</ArchiveAll>
       </Content>
     else return <Content>
       All caught up!
@@ -20,7 +20,7 @@ const GetContent = ({ active, data, showDetails }) => {
   if (active === 1) {
     return <Content>
       {data.raw.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />)}
-      <ArchiveAll onClick={() => archiveAll(true)} >Click to archive all the calls</ArchiveAll>
+      <ArchiveAll onClick={() => archiveAll(true)} >Click to archive all the calls!</ArchiveAll>
     </Content>
   }
   return <Content>Nothing here ATM...</Content>

@@ -49,10 +49,10 @@ const App = () => {
       });
   }
 
-  archiveAll = (status) => {
+  archiveAll = (status, onlyMissing = false) => {
     setLoading(true);
     let total = data.raw.length;
-    data.raw.forEach(call => {
+    (onlyMissing?data.missed:data.raw).forEach(call => {
       postArchived(call.id, status).then(res => {
         total--;
         if (total = 0);

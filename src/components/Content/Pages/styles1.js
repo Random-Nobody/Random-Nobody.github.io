@@ -88,4 +88,5 @@ export const ArchiveAll = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-bottom: 2rem;
 `;
