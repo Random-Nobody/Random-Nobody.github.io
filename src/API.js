@@ -3,9 +3,10 @@ export const getReset = () => fetch('https://aircall-job.herokuapp.com/reset');
 
 export const getCalls = () => fetch('https://aircall-job.herokuapp.com/activities');
 
+//doesn't seem more specific than getCalls(), so is not used
 export const getSpecifics = id => fetch('https://aircall-job.herokuapp.com/activities/' + id);
 
-export const setArchived = (id, status = true) =>
+export const postArchived = (id, status = true) =>
     fetch('https://aircall-job.herokuapp.com/activities/' + id, {
         method: 'POST',
         headers: {

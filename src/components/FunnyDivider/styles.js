@@ -4,7 +4,8 @@ export const Wrapper = styled.div`
     position: relative;
     width: 4rem;
     height: 100%;
-    background-color: ${p => p.flip ? p.theme.background : p.theme.surface};
+    background-color: ${p => p.theme.surface};
+    ${p=>p.flip?'transform:scale(-1,1);':''}
     
     :before{
         content: '';
@@ -15,7 +16,7 @@ export const Wrapper = styled.div`
         left: -50%;
         transform-origin: top right;
         transform: skew(-30deg);
-        background-color: ${p => p.flip ? p.theme.background : p.theme.surface};
+        background-color: ${p => p.theme.surface};
         border-radius: 1rem 0;
         z-index: 1;
         border-right: 2px solid ${p => p.theme.active};
@@ -29,7 +30,7 @@ export const Wrapper = styled.div`
         height: 50%;
         top: 0;
         right: -50%;
-        background-color: ${p => p.flip ? p.theme.surface : p.theme.background};
+        background-color: ${p => p.theme.background};
         transform-origin: bottom left;
         transform: skew(-30deg);
         border-radius: 1rem 0;
@@ -46,5 +47,5 @@ export const Bottom = styled.div`
     width: 100%;
     height: 50%;
     bottom: 0;
-    background-color: ${p => p.flip ? p.theme.surface : p.theme.background};
+    background-color: ${p => p.theme.background};
 `;

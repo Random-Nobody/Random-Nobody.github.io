@@ -7,10 +7,7 @@ import {
 
 
 import Page1 from './Pages/Page1.jsx';
-
-const Page2 = () => <Wrapper2>
-    page1
-</Wrapper2>;
+import Page2 from './Pages/Page2.jsx';
 
 const Page3 = () => {
     return <Wrapper3>
@@ -20,11 +17,11 @@ const Page3 = () => {
     </Wrapper3>;
 }
 
-export default function Content({ data, activePage }) {
+export default function Content({ data, activePage, showDetails }) {
     return (
         <Wrapper activePage={activePage}>
-            <Page1 data={data} />
-            <Page2 data={data} />
+            <Page1 data={data} showDetails={showDetails} />
+            <Page2 data={data} showDetails={showDetails} />
             <Page3 />
         </Wrapper>
     )
