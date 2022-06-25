@@ -7,10 +7,11 @@ import { Overlay as PhoneOverlay } from './components/NumPad/NumPad.jsx';
 import { CallDetails as CallOverlay } from './components/CallCard/CallCard.jsx';
 import Content from './components/Content/Content.jsx';
 
-import { getCalls } from './API.js';
+import { getCalls, postArchived } from './API.js';
 
 export let getUpdate;
 export let startLoading;
+export let archiveAll;
 
 const App = () => {
   const [darkTheme, setTheme] = useState(false);
@@ -46,6 +47,18 @@ const App = () => {
         setData(parsed);
         setLoading(false);
       });
+  }
+
+  archiveAll = (status) => {
+    setLoading(true);
+    let total = data.raw.length;
+    data.raw.forEach(call => {
+      postArchived(call.id, status).then(res => {
+        total--;
+        if (total = 0);
+        getUpdate();
+      })
+    });
   }
 
   useEffect(() => {

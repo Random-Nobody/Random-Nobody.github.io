@@ -1,9 +1,30 @@
 import React, { useState } from 'react'
-import { Wrapper, Titlebar, LogoWrapper, DividerWrapper, MenuWrapper, ActiveBar, Content } from './styles1';
+import { Wrapper, Titlebar, LogoWrapper, DividerWrapper, MenuWrapper, ActiveBar, Content, ArchiveAll } from './styles1';
 
 import Logo from '../../Logo/Logo.jsx';
 import FunnyDivider from '../../FunnyDivider/FunnyDivider.jsx';
 import CallCard from '../../CallCard/CallCard.jsx';
+import { archiveAll } from '../../../App.jsx';
+
+const GetContent = ({ active, data, showDetails }) => {
+  if (active === 0) {
+    if (data.missed.length)
+      return <Content>
+        {data.missed.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />)}
+        <ArchiveAll onClick={() => archiveAll(true)} >Click to archive all the calls</ArchiveAll>
+      </Content>
+    else return <Content>
+      All caught up!
+    </Content>
+  };
+  if (active === 1) {
+    return <Content>
+      {data.raw.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />)}
+      <ArchiveAll onClick={() => archiveAll(true)} >Click to archive all the calls</ArchiveAll>
+    </Content>
+  }
+  return <Content>Nothing here ATM...</Content>
+}
 
 export default function Page1({ data, showDetails }) {
   const [active, setActive] = useState(0);
@@ -25,14 +46,7 @@ export default function Page1({ data, showDetails }) {
         </MenuWrapper>
         <ActiveBar active={active} />
       </Titlebar>
-      <Content>
-        {active === 0 ?
-          data.missed.length ? data.missed.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />) :
-            <div>All caught up!</div> :
-          active === 1 ? data.raw.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />) :
-            'Also nothing here atm'
-        }
-      </Content>
+      <GetContent active={active} data={data} showDetails={showDetails} />
     </Wrapper>
   )
 }

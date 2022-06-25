@@ -25,7 +25,6 @@ export default function CallCard({ call, onClick }) {
                 <div>{calender}</div>
                 <div>{watch}</div>
             </Time>
-
         </Wrapper>
     )
 }

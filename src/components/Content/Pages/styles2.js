@@ -74,3 +74,14 @@ export const Content = styled.div`
         display: none;
     }
 `;
+
+export const ArchiveAll = styled.div`
+    width: 100%;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: ${p=>p.theme.secondary};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
