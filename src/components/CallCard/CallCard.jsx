@@ -2,7 +2,7 @@ import React from 'react'
 import { Wrapper, Caller, Time, Direction, Blur, Details, Archive } from './styles'
 import { getDate, monthName, formatTime } from '../../utils/Utils';
 import { postArchived } from '../../API';
-import { getUpdate } from '../../App.jsx';
+import { getUpdate, startLoading } from '../../App.jsx';
 
 export default function CallCard({ call, onClick }) {
 
@@ -35,11 +35,13 @@ export function CallDetails({ call, setCall }) {
     const unblur = event => event.target.classList.contains('unblur') && setCall(false);
 
     const archiveClick = () => {
+        startLoading();
         postArchived(call.id, !call.is_archived)
             .then(res => res.json())
-            .then(console.log);
-        setCall(false);
-        getUpdate();
+            .then(() => {
+                setCall(false);
+                getUpdate();
+            });
     }
 
     return (

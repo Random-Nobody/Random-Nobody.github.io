@@ -10,6 +10,7 @@ import Content from './components/Content/Content.jsx';
 import { getCalls } from './API.js';
 
 export let getUpdate;
+export let startLoading;
 
 const App = () => {
   const [darkTheme, setTheme] = useState(false);
@@ -22,6 +23,8 @@ const App = () => {
     missed: [],
     archived: []
   });
+
+  startLoading = () => setLoading(true);
 
   getUpdate = () => {
     setLoading(true);

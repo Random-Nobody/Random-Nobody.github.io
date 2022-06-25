@@ -6,7 +6,7 @@ import FunnyDivider from '../../FunnyDivider/FunnyDivider.jsx';
 import CallCard from '../../CallCard/CallCard.jsx';
 
 export default function Page1({ data, showDetails }) {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
 
   const handleActive = page => () => setActive(page);
   return (
@@ -26,7 +26,9 @@ export default function Page1({ data, showDetails }) {
         <ActiveBar active={active} />
       </Titlebar>
       <Content>
-        {active === 0 ? data.missed.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />) :
+        {active === 0 ?
+          data.missed.length ? data.missed.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />) :
+            <div>All caught up!</div> :
           active === 1 ? data.raw.map(call => <CallCard key={call.id} call={call} onClick={() => showDetails(call)} />) :
             'Also nothing here atm'
         }
