@@ -8,7 +8,8 @@ export default function BottomButtons({
     setPage,
     darkTheme,
     setTheme,
-    setOverlay
+    setOverlay,
+    data
 }) {
 
     const iconClick = page => () => setPage(page);
@@ -20,7 +21,7 @@ export default function BottomButtons({
             <Wrapper>
                 <Icon active={activePage === 0} onClick={iconClick(0)}>
                     <i className="fa-solid fa-phone" />
-                    <Alert>5</Alert>
+                    <Alert>{data.missed.length}</Alert>
                 </Icon>
                 <Icon active={activePage === 1} onClick={iconClick(1)}>
                     <i className="fa-solid fa-bookmark" />
